@@ -1,0 +1,9 @@
+# Local Postgres for dev and tests. Port 5566 so it never collides with Railgun's 5432/5544.
+services:
+  db:
+    image: postgres:17
+    environment:
+      POSTGRES_USER: owner
+      POSTGRES_PASSWORD: owner
+      POSTGRES_DB: app
+    ports: ["5566:5432"]
