@@ -8,6 +8,7 @@ import { pool } from './db'
 // BETTER_AUTH_SECRET and BETTER_AUTH_URL come from the env (see .env.example).
 export const auth = betterAuth({
   database: pool,
-  emailAndPassword: { enabled: true, autoSignIn: true },
+  // accounts are seeded by db/seed.mjs; public sign-up is off
+  emailAndPassword: { enabled: true, autoSignIn: true, disableSignUp: true },
   plugins: [nextCookies()],
 })

@@ -48,6 +48,8 @@ await owner.query(`
   GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA public TO app_user;
   GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO app_user;
   REVOKE ALL ON _migrations FROM app_user;
+  -- audit history is append-only for the app
+  REVOKE UPDATE, DELETE ON audit_entry FROM app_user;
 `)
 console.log('grants applied to app_user')
 await owner.end()
