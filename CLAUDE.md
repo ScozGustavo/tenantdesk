@@ -53,7 +53,7 @@ pnpm test              # vitest
 pnpm build             # production build
 ```
 
-Production: Neon Postgres (`app_user` over the pooled connection), hosted on Railway. Run `pnpm db:migrate` with `DATABASE_OWNER_URL` set to Neon's direct owner URL before each deploy.
+Production: Neon Postgres (`app_user` over the pooled connection), hosted on Railway (service `web`, https://web-production-98ce5.up.railway.app). Deploy with `railway up --service web --ci`; `railway.json` runs `pnpm db:migrate` as a pre-deploy step with Neon's direct owner URL, so the schema is migrated before the new code serves traffic. Railway's builder refuses dependencies with known critical CVEs: keep `next` patched.
 
 ## Workspace boundary
 
